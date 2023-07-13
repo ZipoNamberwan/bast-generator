@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/generate', [App\Http\Controllers\GeneratorController::class, 'generate']);
+Route::get('/generate-pml', [App\Http\Controllers\GeneratorController::class, 'generatePML']);
+Route::get('/test', [App\Http\Controllers\GeneratorController::class, 'test']);
