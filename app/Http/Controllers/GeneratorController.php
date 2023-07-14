@@ -171,17 +171,26 @@ class GeneratorController extends Controller
                         $matrix_temporary[$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'] + 1;
                         $matrix_temporary[$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
                     }
-                    $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]), 'rutp' => $matrix_temporary[$kode_sls]['rutp'], 'utp' => $matrix_temporary[$kode_sls]['utp']];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]), 'rutp' => $matrix_temporary[$kode_sls]['rutp'], 'utp' => $matrix_temporary[$kode_sls]['utp']];
+
+                    $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => 1, 'rutp' => 1, 'utp' => $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue()];
                 } else {
                     $matrix_temporary[$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'] + 1;
                     $matrix_temporary[$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'];
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'];
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
+
+
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] + 1;
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
                 }
 
+                // $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
+                $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
+
                 $matrix_result[$petugas][$date[0]][$kode_sls]['status'] = $repo_result[$kode_sls] ? ($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] >= $rekap_result[$kode_sls][0] ? 1 : 2) : 2;
-                $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
                 $matrix_result[$petugas][$date[0]][$kode_sls]['desa'] = "[" . $master_sls_result[$kode_sls][0] . "] " . $master_sls_result[$kode_sls][1];
                 $matrix_result[$petugas][$date[0]][$kode_sls]['sls'] = "[" . $master_sls_result[$kode_sls][2] . "] " . $master_sls_result[$kode_sls][3];
             }
@@ -396,17 +405,26 @@ class GeneratorController extends Controller
                         $matrix_temporary[$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'] + 1;
                         $matrix_temporary[$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
                     }
-                    $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]), 'rutp' => $matrix_temporary[$kode_sls]['rutp'], 'utp' => $matrix_temporary[$kode_sls]['utp']];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]), 'rutp' => $matrix_temporary[$kode_sls]['rutp'], 'utp' => $matrix_temporary[$kode_sls]['utp']];
+
+                    $matrix_result[$petugas][$date[0]][$kode_sls] = ['pemutakhiran' => 1, 'rutp' => 1, 'utp' => $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue()];
                 } else {
                     $matrix_temporary[$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'] + 1;
                     $matrix_temporary[$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'];
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'];
-                    $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_temporary[$kode_sls]['rutp'];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_temporary[$kode_sls]['utp'];
+                    // $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
+
+
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] = $matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] + 1;
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] = $matrix_result[$petugas][$date[0]][$kode_sls]['utp'] + $wilkerstat->getActiveSheet()->getCell('P' . $i)->getValue();
+                    $matrix_result[$petugas][$date[0]][$kode_sls]['pemutakhiran'] = (int) floor($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $regsosek_result[$kode_sls]);
                 }
 
+                // $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
+                $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
+
                 $matrix_result[$petugas][$date[0]][$kode_sls]['status'] = $repo_result[$kode_sls] ? ($matrix_result[$petugas][$date[0]][$kode_sls]['rutp'] >= $rekap_result[$kode_sls][0] ? 1 : 2) : 2;
-                $matrix_result[$petugas][$date[0]][$kode_sls]['prelist'] = (int) floor($matrix_temporary[$kode_sls]['rutp'] / $rekap_result[$kode_sls][0] * $prelist_result[$kode_sls]);
                 $matrix_result[$petugas][$date[0]][$kode_sls]['desa'] = "[" . $master_sls_result[$kode_sls][0] . "] " . $master_sls_result[$kode_sls][1];
                 $matrix_result[$petugas][$date[0]][$kode_sls]['sls'] = "[" . $master_sls_result[$kode_sls][2] . "] " . $master_sls_result[$kode_sls][3];
             }
@@ -429,7 +447,7 @@ class GeneratorController extends Controller
                 $row = 14;
 
                 $sheet = $spreadsheet->getActiveSheet();
-                $sheet->setCellValue('K' . ($row + 8), strtoupper($petugas));
+                $sheet->setCellValue('K' . ($row + 8), strtoupper($pml));
                 $sheet->setCellValue('D' . ($row + 2), "Diterima tanggal: " . date('d', strtotime($date['end'])) . ' Juni 2023');
                 // $sheet->setCellValue('D31', strtoupper($struktur_result[$petugas]));
                 foreach ($matrix_p as $petugas => $matrix) {
